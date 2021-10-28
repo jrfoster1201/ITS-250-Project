@@ -1,0 +1,7 @@
+answer_yes = [Yes, yes, y, Y, yea]     #establishes what is a valid yes response from user
+no_answer = [No, no, n, N, nah]         #establishes what is a valid no response from user
+def intro():
+ name = input("Please enter your name")
+ print("Hello", name "Welcome to KILLER ESCAPE\n Will You Make It Out Alive?")
+ 
+ 
