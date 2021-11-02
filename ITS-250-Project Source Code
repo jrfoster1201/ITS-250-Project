@@ -1,7 +1,106 @@
-answer_yes = [Yes, yes, y, Y, yea]     #establishes what is a valid yes response from user
-no_answer = [No, no, n, N, nah]         #establishes what is a valid no response from user
-def intro():
- name = input("Please enter your name")
- print("Hello", name "Welcome to KILLER ESCAPE\n Will You Make It Out Alive?")
+answer_yes = ["Yes", "yes", "y", "Y", "yea"]                                                                                                    #establishes what is a valid yes response from user
+answer_no = ["No", "no", "n", "N", "nah"]                                                                                                       #establishes what is a valid no response from user
+import time                                                                                                                                     #import time modual
+
+
+def intro():                                                                                                                                    #function that holds all commands of the intro to the game
+ name = input("Please enter your name: ")                                                                                                       #input for name
+ print("Hello " + name + " Welcome to KILLER ESCAPE\n Will You Make It Out Alive?")                                                             #text output
+ time.sleep(5)                                                                                                                                  #slows next line of code for dramatic effect
+ print("""Lets Begin
+
+You wake up in a dark room illuminated only by a single candle in the corner of the room.
+You hear a faint old womans voice saying Kill Them Jason
+
+""")                                                                                                                                            #text output
  
- 
+
+
+def firstChoice():                                                                                                                              # function that lays out what happens in the First Choice
+    print("While shuddering from the voice you see by the dim light of the candle a window which could be a possible escape\n ")                #text output
+    time.sleep(4)                                                                                                                               #slows next line of code for dramatic effect
+    answer1 = input("Do you try to go out from the window?")                                                                                    #answer input
+    if answer1 in answer_yes:                                                                                                                   #if statement to look if yes was chosen
+          print("\n You punch through the window making a loud noise surely allerting the killer to you as well as badly damaging your hand\n however, you crawl through the broken window and feel the cool outdoor air")          #text output
+          time.sleep(2)                                                                                                                         #slows next line of code for dramatic effect
+          secondChoiceOutside()                                                                                                                 #calls secondChoiceOutside Function
+    elif answer1 in answer_no:                                                                                                                  #else if statement that corisponds to first if statement and looks for if no was chosen
+          print("\n You decide that would be a bad idea and choose to stay inside you feel an omnitiant presence growing closer and have no choice but too open the door to exit the room")                                         #text output
+          time.sleep(2)#slows next line of code for dramatic effect
+          secondChoiceInside()                                                                                                                  #calls secondChoiceInside Function
+                                
+    else: 
+        invalidInput()                                                                                                                          #calls invalid Input function
+
+   
+def secondChoiceOutside():
+
+    print("While wandering in outside of what you now see to be a cabin you see a pair of car keys")                                            #text output
+    answer2 = input("Do you pick it up?")                                                                                                       #answer input
+    if answer2 in answer_yes:                                                                                                                   #if statement to decide what should be done with what choice
+                print("\n You picked up the car keys")                                                                                          #text output
+                time.sleep(2)                                                                                                                   #slows next line of code for dramatic effect
+                print("\n You discover a car next to the cabin hop in and use the keys to drive off")                                           #text output
+                winCondition()                                                                                                                  #calls win condition function
+                    
+    elif  answer2 in answer_no:                                                                                                                 #else if statement that corisponds to the first if statement
+            print("You decide to not take the car keys you look to see the killer staring straight into your eyes")                             #text output
+            loseCondition()                                                                                                                     #calls lose condition function
+    else:
+        invalidInput()
+
+def secondChoiceInside():
+    print("You open the door and walk through the house and see bloodied weapons throughout the house and the door wide open")                  #text output
+    time.sleep(3)                                                                                                                               #slows next line of code for dramatic effect
+    answerIn1 = input("Do you go outside?: ")                                                                                                   #answer input
+    if answerIn1 in answer_yes:
+            print("You run straight outside into the when a man wearing a hockey mask runs into you")                                           #text output
+            loseCondition()
+
+    elif answerIn1 in answer_no:
+            print("You stay inside stuck you are now frozen in place as you feel a swift thrust into your backside")                            #text output
+            loseCondition()
+    else:
+        invalidInput()
+                
+                  
+                          
+                    
+    
+
+
+
+
+
+
+
+
+
+def invalidInput():                                                                                                                             #function for an invalid input
+    print("you have made an invalid input and therfore have not survived KILLER ESCAPE better luck next time ¯\_(ツ)_/¯")
+
+
+
+def winCondition():                                                                                                                             #displays message if you escaped
+    print ("""CONGRATULATIONS YOU HAVE ESCAPED!!!!!!!!!!!!!!!!!!!!!
+Try Again
+""")
+
+def loseCondition():                                                                                                                            #displayes message if you did not escape
+    print ("""ZOINKS YOU DIED ¯\_(ツ)_/¯
+                TryAgain
+
+""")
+
+def game():                                                                                                                                     #function that starts the game and houses the functions that run it
+    intro()
+    firstChoice()
+
+game()                                                                                                                                          #calls game function
+while input("Do you want to play again? [y/n]") == "y":                                                                                         #while loop that makes the code repeat if you want to play again
+    game()
+
+
+        
+
+
